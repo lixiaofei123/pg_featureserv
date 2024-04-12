@@ -194,10 +194,15 @@ func (cat *catalogDB) TableByName(name string) (*Table, error) {
 	cat.refreshTables(false)
 	tbl, ok := cat.tableMap[name]
 	if !ok {
-		return nil, nil
+		cat.refreshTables(true)
+		tbl, ok = cat.tableMap[name]
+		if !ok {
+			return nil, nil
+		}
 	}
 	return tbl, nil
 }
+
 
 func (cat *catalogDB) TableFeatures(ctx context.Context, name string, param *QueryParam) ([]string, error) {
 	tbl, err := cat.TableByName(name)
