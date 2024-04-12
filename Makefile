@@ -12,7 +12,7 @@
 APPVERSION ?= latest
 GOVERSION ?= 1.21.6
 PROGRAM ?= pg_featureserv
-CONTAINER ?= pramsey/$(PROGRAM)
+CONTAINER ?= mrlee326/$(PROGRAM)
 DATE ?= $(shell date +%Y%m%d)
 BASE_REGISTRY ?= registry.access.redhat.com
 BASE_IMAGE ?= ubi8-micro
